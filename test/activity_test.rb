@@ -29,4 +29,15 @@ class ActivityTest < Minitest::Test
       assert cost.is_a? Float
     end
   end
+
+  def test_you_can_add_participants
+    @activity.add_participant('George', 15.00)
+
+    assert @activity.participants.keys.include?('George')
+    assert_equal 15.00, @activity.participants['George']
+  end
+
+  def test_total_activity_cost
+    assert_equal 45.00, @activity.total_cost
+  end
 end
