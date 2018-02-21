@@ -4,7 +4,7 @@ require './lib/reunion'
 # Runs reunion and builds erb html page
 class ReunionRunner
   def initialize
-    @reunion = Reunion.new
+    @reunion = Reunion.new('Denver')
     add_reunion_events
     erb_render
   end
@@ -22,9 +22,11 @@ class ReunionRunner
   def erb_render
     template = File.read('./lib/template.html.erb')
     renderer = ERB.new(template)
-    result = renderer.result()
+    result = renderer.result(binding)
     File.open('./lib/reunion_output.html', 'w') do |file|
       file.write(result)
     end
   end
 end
+
+ReunionRunner.new

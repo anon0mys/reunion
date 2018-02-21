@@ -1,4 +1,4 @@
-require 'pry'
+require './lib/activity'
 
 # Managaes activities and tracks overall owed/owes for participants
 class Reunion
