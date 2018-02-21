@@ -1,3 +1,5 @@
+require 'pry'
+
 # Managaes activities and tracks overall owed/owes for participants
 class Reunion
   attr_reader :location, :activities
@@ -12,8 +14,18 @@ class Reunion
   end
 
   def total_reunion_cost
+    @activities.map(&:total_cost).sum
+  end
+
+  def owed_summary
     @activities.map do |activity|
-      activity.total_cost
-    end.sum
+      [activity.name, activity.owed?]
+    end.to_h
+  end
+
+  def individual_total_owed
+    owed_summary.values.reduce do |result, activity|
+      result.merge(activity) { |_key, sum, new_value| sum + new_value }
+    end
   end
 end
