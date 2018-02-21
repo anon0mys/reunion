@@ -1,0 +1,11 @@
+<html>
+  <head>
+    <title> Reunion in <%= @reunion.location %> </title>
+  </head>
+  <body>
+    <h2> Your event summary: </h2><br>
+    <p> <%= @reunion.owed_summary %></p><br>
+    <h2> Amounts owed by person: </h2>
+    <p> <%= @reunion.individual_total_owed %></p>
+  </body>
+</html>
