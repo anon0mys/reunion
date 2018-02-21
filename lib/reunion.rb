@@ -10,4 +10,10 @@ class Reunion
   def add_activity(name, participants)
     @activities << Activity.new(name, participants)
   end
+
+  def total_reunion_cost
+    @activities.map do |activity|
+      activity.total_cost
+    end.sum
+  end
 end
