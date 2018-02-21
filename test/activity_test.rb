@@ -40,4 +40,13 @@ class ActivityTest < Minitest::Test
   def test_total_activity_cost
     assert_equal 45.00, @activity.total_cost
   end
+
+  def test_split_activity_cost
+    assert_equal 22.50, @activity.split_cost
+  end
+
+  def test_evaluate_owed?
+    shares = { 'Tom' => -2.5, 'Jim' => 2.5 }
+    assert_equal shares, @activity.owed?
+  end
 end
